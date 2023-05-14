@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_nubes"
+    android:padding="16sp"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:iconifiedByDefault="false" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16sp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#59000000"
+                app:cardCornerRadius="4dp" >
+
+                <TextView
+                    android:id="@+id/tvNombreCiudad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:text="Ciudad" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvCurrentWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16sp"
+                app:cardBackgroundColor="#59000000"
+                app:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8sp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8sp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="@string/tv_tiempo_actual" />
+
+                        <Button
+                            android:id="@+id/btnDetalleCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="110sp"
+                            android:backgroundTint="#40FFFFFF"
+                            android:text="@string/btn_detalle"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconCurrentWeather"
+                            android:layout_width="100sp"
+                            android:layout_height="100sp" />
+
+                        <TextView
+                            android:id="@+id/tvTemperaturaCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32sp"
+                            android:textColor="@color/white"
+                            android:textSize="50sp"
+                            tools:text="Temp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvDescrpcionCurrentWeather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        tools:text="Descripcion" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8sp"
+                        android:gravity="center_vertical|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvSensacionTermicaCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="Sens" />
+
+                        <TextView
+                            android:id="@+id/tvVelocidadVientoCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32sp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="Viento" />
+
+                        <TextView
+                            android:id="@+id/tvDireccionVientoCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32sp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="Viento" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvHumedadCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="Humedad" />
+
+                        <TextView
+                            android:id="@+id/tvNubosidadCurrentWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32sp"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="Nubosidad" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvForecastWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32sp"
+                app:cardBackgroundColor="#59000000"
+                app:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvForecastWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="@string/tv_pronostico_por_horas" />
+
+                        <Button
+                            android:id="@+id/btnDetalleForecastWeather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="50sp"
+                            android:backgroundTint="#40FFFFFF"
+                            android:text="@string/btn_detalle"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvForecastWeather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAirPollution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32sp"
+                app:cardBackgroundColor="#59000000"
+                app:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvAirPollution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="@string/tv_calidad_del_aire" />
+
+                        <Button
+                            android:id="@+id/btnDetalleAirPollution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="80sp"
+                            android:backgroundTint="#40FFFFFF"
+                            android:text="@string/btn_detalle"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAquiAirPollution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        tools:text="@string/tv_calidad_del_aire" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

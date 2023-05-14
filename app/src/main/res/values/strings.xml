@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppTempus</string>
+    <string name="tv_tiempo_actual">Tiempo Actual</string>
+    <string name="btn_detalle"><![CDATA[Más >]]></string>
+    <string name="tv_pronostico_por_horas">Pronóstico por Horas</string>
+    <string name="tv_calidad_del_aire">Calidad del Aire</string>
+</resources>
