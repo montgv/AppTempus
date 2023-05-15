@@ -21,11 +21,12 @@
             android:layout_gravity="center"
             android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/ivIconForescastWeather"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieIconForescastWeather"
             android:layout_marginTop="6dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            app:lottie_loop="true" />
 
         <TextView
             android:id="@+id/tvTemperaturaForescastWeather"

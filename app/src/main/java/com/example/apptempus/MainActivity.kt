@@ -1,6 +1,7 @@
 package com.example.apptempus
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,15 +18,14 @@ import com.example.apptempus.api.services.ApiServiceForecastWeather
 import com.example.apptempus.api.services.ApiServiceGeocodingApi
 import com.example.apptempus.databinding.ActivityMainBinding
 import com.example.apptempus.tools.PrefSetting
+import com.example.apptempus.tools.ToolsApi
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.newFixedThreadPoolContext
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         if (mapCoordenadas.isNotEmpty() && mapCoordenadas["latitud"] != null && mapCoordenadas["longitud"] != null) {
             latitud = mapCoordenadas["latitud"].toString().toDouble()
             longitud = mapCoordenadas["longitud"].toString().toDouble()
+        } else {
+            latitud = 38.0928
+            longitud = -3.6344
         }
     }
 
@@ -64,10 +67,7 @@ class MainActivity : AppCompatActivity() {
         forecast()
         airPollution()
 
-        updateBackground()
-
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
-        {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchByNombreCiudad(query.orEmpty())
                 return false
@@ -76,16 +76,31 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText: String?) = false
         })
 
+        //forecastWeatherAdapter = ForecastWeatherAdapter { navegarAlDetalleForecastWeather(it) }
+
         binding.rvForecastWeather.setHasFixedSize(true)
-        binding.rvForecastWeather.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvForecastWeather.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         forecastWeatherAdapter = ForecastWeatherAdapter()
         binding.rvForecastWeather.adapter = forecastWeatherAdapter
+
+        binding.btnDetalleAirPollution.setOnClickListener {
+            natigateToDetailAirPollution()
+        }
     }
+
+    private fun natigateToDetailAirPollution() {
+        val intent = Intent(this, DetailAirPollutionActivity::class.java)
+        startActivity(intent)
+    }
+
 
     private fun searchByNombreCiudad(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<GeocodingApiDataResponse> = retrofit.create(
-                ApiServiceGeocodingApi::class.java).getNombreCiudad("geo/1.0/direct?q=$query&limit=1&appid=f014a68f430feb66d6a50b19da4956ee")
+                ApiServiceGeocodingApi::class.java
+            )
+                .getNombreCiudad("geo/1.0/direct?q=$query&limit=1&appid=f014a68f430feb66d6a50b19da4956ee")
             val response: GeocodingApiDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
                 Log.i("montse", "funciona :)")
@@ -112,7 +127,9 @@ class MainActivity : AppCompatActivity() {
     private fun airPollution() {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<AirPollutionDataResponse> = retrofit.create(
-                ApiServiceAirPollution::class.java).getContaminacionCiudad("data/2.5/air_pollution?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee")
+                ApiServiceAirPollution::class.java
+            )
+                .getContaminacionCiudad("data/2.5/air_pollution?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee")
 
             val response: AirPollutionDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
@@ -131,34 +148,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pintarDatosAirPollution(datosAir: AirPollutionDataResponse) {
-            when(datosAir.list?.get(0)?.main?.aqi) {
+        when (datosAir.list?.get(0)?.main?.aqi) {
+            1 -> {
+                binding.tvAquiAirPollution.text = "Bueno"
+            }
 
-                1 -> {
-                    binding.tvAquiAirPollution.text = "Bueno"
-                }
-                2 -> {
-                    binding.tvAquiAirPollution.text = "Regular"
-                }
-                3 -> {
-                    binding.tvAquiAirPollution.text = "Moderado"
-                }
-                4 -> {
-                    binding.tvAquiAirPollution.text = "Malo"
-                }
-                5 -> {
-                    binding.tvAquiAirPollution.text = "Muy Malo"
-                }
-                else -> {
-                    binding.tvAquiAirPollution.text = "Nulo"
-                }
-            }.toString()
+            2 -> {
+                binding.tvAquiAirPollution.text = "Regular"
+            }
+
+            3 -> {
+                binding.tvAquiAirPollution.text = "Moderado"
+            }
+
+            4 -> {
+                binding.tvAquiAirPollution.text = "Malo"
+            }
+
+            5 -> {
+                binding.tvAquiAirPollution.text = "Muy Malo"
+            }
+
+            else -> {
+                binding.tvAquiAirPollution.text = "No hay datos"
+            }
+        }
     }
 
     private fun forecast() {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<ForecastWeatherDataResponse> = retrofit.create(
-                ApiServiceForecastWeather::class.java).getPrediccionCiudad(
-                "data/2.5/forecast?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee&units=metric&lang=sp")
+                ApiServiceForecastWeather::class.java
+            ).getPrediccionCiudad(
+                "data/2.5/forecast?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee&units=metric&lang=sp"
+            )
 
             val response: ForecastWeatherDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
@@ -167,7 +190,9 @@ class MainActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("montse", response.toString())
                     runOnUiThread {
-                        forecastWeatherAdapter.updateListaForecastWeather(response.list ?: emptyList())
+                        forecastWeatherAdapter.updateListaForecastWeather(
+                            response.list ?: emptyList()
+                        )
                         forecastWeatherAdapter.notifyDataSetChanged()
                     }
                 }
@@ -180,8 +205,10 @@ class MainActivity : AppCompatActivity() {
     private fun currentWeather() {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<CurrentWeatherDataResponse> = retrofit.create(
-                ApiServiceCurrentWeather::class.java).getLocalizacionCiudad(
-                "data/2.5/weather?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee&units=metric&lang=sp")
+                ApiServiceCurrentWeather::class.java
+            ).getLocalizacionCiudad(
+                "data/2.5/weather?lat=${latitud}&lon=${longitud}&appid=f014a68f430feb66d6a50b19da4956ee&units=metric&lang=sp"
+            )
 
             val response: CurrentWeatherDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
@@ -190,6 +217,7 @@ class MainActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("montse", response.toString())
                     runOnUiThread {
+                        updateBackground(response)
                         pintarDatosCurrentWeather(response)
                     }
                 }
@@ -202,38 +230,51 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun pintarDatosCurrentWeather(datos: CurrentWeatherDataResponse) {
         binding.tvNombreCiudad.text = datos.name.toString()
-        Picasso.get().load("https://openweathermap.org/img/w/${datos.weather?.get(0)?.icon}.png").into(binding.ivIconCurrentWeather)
-        binding.tvTemperaturaCurrentWeather.text = String.format("%.2f º", datos.main?.temp?.toFloat())
+        val animation = datos.weather?.get(0)?.icon?.let { ToolsApi.getAnimation(it) }
+        if (animation != null) {
+            binding.lottieIconCurrentWeather.setAnimation(animation)
+            binding.lottieIconCurrentWeather.playAnimation()
+        }
+        binding.tvTemperaturaCurrentWeather.text =
+            String.format("%.2f º", datos.main?.temp?.toFloat())
         binding.tvDescrpcionCurrentWeather.text = datos.weather?.get(0)?.description.toString()
-        binding.tvSensacionTermicaCurrentWeather.text = String.format("%.2f º", datos.main?.feelsLike?.toFloat())
-        binding.tvVelocidadVientoCurrentWeather.text = String.format("%.2f m/s", datos.wind?.speed?.toFloat())
+        binding.tvSensacionTermicaCurrentWeather.text =
+            String.format("%.2f º", datos.main?.feelsLike?.toFloat())
+        binding.tvVelocidadVientoCurrentWeather.text =
+            String.format("%.2f m/s", datos.wind?.speed?.toFloat())
         binding.tvDireccionVientoCurrentWeather.text = datos.wind?.deg.toString()
-        binding.tvHumedadCurrentWeather.text = String.format("%s", datos.main?.humidity.toString()) + " %"
-        binding.tvNubosidadCurrentWeather.text = String.format("%s", datos.clouds?.all.toString()) + " %"
+        binding.tvHumedadCurrentWeather.text =
+            String.format("%s", datos.main?.humidity.toString()) + " %"
+        binding.tvNubosidadCurrentWeather.text =
+            String.format("%s", datos.clouds?.all.toString()) + " %"
     }
 
-
     private fun updateBackground(datosCurrent: CurrentWeatherDataResponse) {
-        when(datosCurrent.weather?.get(0)?.icon) {
+        when (datosCurrent.weather?.get(0)?.icon) {
+            "01n", "02n", "03n", "04n", "09n", "10n", "11n", "13n", "50n" -> {
+                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
+            }
+            "01d" -> {
+                //cielo con sol
+                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
+            }
 
-            "01n" -> {
-                window?.setBackgroundDrawable(R.drawable.bg_app_noche)
+            "02d", "03d", "04d" -> {
+                binding.ivBackground.setImageResource(R.drawable.bg_app_nubes)
             }
-            2 -> {
-                binding.tvAquiAirPollution.text = "Regular"
+
+            "09d", "10d", "11d" -> {
+                binding.ivBackground.setImageResource(R.drawable.bg_app_lluvia)
             }
-            3 -> {
-                binding.tvAquiAirPollution.text = "Moderado"
+
+            "50d" -> {
+                //niebla
+                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
             }
-            4 -> {
-                binding.tvAquiAirPollution.text = "Malo"
-            }
-            5 -> {
-                binding.tvAquiAirPollution.text = "Muy Malo"
-            }
+
             else -> {
-                binding.tvAquiAirPollution.text = "Nulo"
+                binding.ivBackground.setImageResource(R.drawable.bg_app_nubes)
             }
-        }.toString()
+        }
     }
 }
