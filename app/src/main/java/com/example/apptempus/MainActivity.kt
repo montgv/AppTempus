@@ -92,6 +92,14 @@ class MainActivity : AppCompatActivity() {
             natigateToDetailAirPollution()
         }
 
+        binding.btnDetalleForecastWeather.setOnClickListener {
+            navigateToDetailForecast()
+        }
+    }
+
+    private fun navigateToDetailForecast() {
+        val intent = Intent(this, DetailForecastActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToDetailCurrenteWeather() {

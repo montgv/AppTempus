@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailForecastActivity">
+
+    <ImageView
+        android:id="@+id/ivBackgroundDetailForecast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_app_nubes" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitleDetailForecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:gravity="center"
+                android:text="RecyclerView"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDetailForecast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16sp"
+                android:layout_marginVertical="32dp"
+                app:cardBackgroundColor="#59000000"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetailForecast">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDateDetailForecast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        tools:text="Fecha" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieIconDetailForecast"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        app:lottie_loop="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvDescrpcionDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            tools:text="Descripcion" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvTemperaturaDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="32sp"
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                tools:text="Temp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconSensacionTermicaDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleSensacionTermicaDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Sensación Térmica"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvSensacionTermicaDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="Sens" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconVelocidadVientoDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleVelocidadVientoDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Velocidad del Viento"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvVelocidadVientoDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="VelViento" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconDireccionVientoDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleDireccionVientoDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Dirección del Viento"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvDireccionVientoDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="DirViento" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconPrecipitacionesDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitlePrecipitacionesDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Precipitaciones"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvPrecipitacionesDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="Precip" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconVisibilidadDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleVisibilidadDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Visibilidad"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvVisibilidadDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="Visibilidad" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconHumedadDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleHumedadDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Humedad"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvHumedadDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="Humedad" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivIconNubosidadDetailForecast"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginEnd="16sp" />
+
+                        <TextView
+                            android:id="@+id/tvTitleNubosidadDetailForecast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16sp"
+                            android:text="Nubosidad"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|end">
+
+                            <TextView
+                                android:id="@+id/tvNubosidadDetailForecast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16sp"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                tools:text="Nubosidad" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,8 @@
         android:id="@+id/ivBackgroundMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_app_nubes"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_app_nubes" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -32,10 +32,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16sp"
                 app:cardBackgroundColor="#59000000"
-                app:cardCornerRadius="4dp" >
+                app:cardCornerRadius="4dp">
 
                 <TextView
                     android:id="@+id/tvNombreCiudad"
@@ -77,9 +77,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="8sp"
+                            android:text="@string/tv_tiempo_actual"
                             android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:text="@string/tv_tiempo_actual" />
+                            android:textSize="20sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -126,9 +126,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="16sp"
+                        android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="24sp"
-                        android:textAllCaps="true"
                         tools:text="Descripcion" />
 
                     <LinearLayout
@@ -166,7 +166,6 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -196,9 +195,9 @@
                             android:id="@+id/tvForecastWeather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/tv_pronostico_por_horas"
                             android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:text="@string/tv_pronostico_por_horas" />
+                            android:textSize="20sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -253,9 +252,9 @@
                             android:id="@+id/tvAirPollution"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/tv_calidad_del_aire"
                             android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:text="@string/tv_calidad_del_aire" />
+                            android:textSize="20sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -279,9 +278,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16sp"
+                        android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textAllCaps="true"
                         tools:text="@string/tv_calidad_del_aire" />
 
                 </LinearLayout>
