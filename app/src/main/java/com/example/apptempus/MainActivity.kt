@@ -84,9 +84,19 @@ class MainActivity : AppCompatActivity() {
         forecastWeatherAdapter = ForecastWeatherAdapter()
         binding.rvForecastWeather.adapter = forecastWeatherAdapter
 
+        binding.btnDetalleCurrentWeather.setOnClickListener {
+            navigateToDetailCurrenteWeather()
+        }
+
         binding.btnDetalleAirPollution.setOnClickListener {
             natigateToDetailAirPollution()
         }
+
+    }
+
+    private fun navigateToDetailCurrenteWeather() {
+        val intent = Intent(this, DetailCurrentWeatherActivity::class.java)
+        startActivity(intent)
     }
 
     private fun natigateToDetailAirPollution() {
@@ -103,8 +113,9 @@ class MainActivity : AppCompatActivity() {
                 .getNombreCiudad("geo/1.0/direct?q=$query&limit=1&appid=f014a68f430feb66d6a50b19da4956ee")
             val response: GeocodingApiDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
-                Log.i("montse", "funciona :)")
+                Log.i("montse", "funciona busqueda nombre")
 
+                //Tengo que controlar que el array no este vacio
                 if (response != null) {
                     Log.i("montse", response.toString())
                     runOnUiThread {
@@ -115,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Log.i("montse", "no funciona :(")
+                Log.i("montse", "no funciona busqueda nombre :(")
             }
         }
     }
@@ -133,7 +144,7 @@ class MainActivity : AppCompatActivity() {
 
             val response: AirPollutionDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
-                Log.i("montse", "funciona :)")
+                Log.i("montse", "funciona air pollution :)")
 
                 if (response != null) {
                     Log.i("montse", response.toString())
@@ -142,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Log.i("montse", "no funciona :(")
+                Log.i("montse", "no funciona air pollution :(")
             }
         }
     }
@@ -185,7 +196,7 @@ class MainActivity : AppCompatActivity() {
 
             val response: ForecastWeatherDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
-                Log.i("montse", "funciona :)")
+                Log.i("montse", "funciona forecast :)")
 
                 if (response != null) {
                     Log.i("montse", response.toString())
@@ -197,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Log.i("montse", "no funciona :(")
+                Log.i("montse", "no funciona forecast :(")
             }
         }
     }
@@ -212,7 +223,7 @@ class MainActivity : AppCompatActivity() {
 
             val response: CurrentWeatherDataResponse? = myResponse.body()
             if (myResponse.isSuccessful) {
-                Log.i("montse", "funciona :)")
+                Log.i("montse", "funciona current :)")
 
                 if (response != null) {
                     Log.i("montse", response.toString())
@@ -222,7 +233,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Log.i("montse", "no funciona :(")
+                Log.i("montse", "no funciona current :(")
             }
         }
     }
@@ -243,37 +254,34 @@ class MainActivity : AppCompatActivity() {
         binding.tvVelocidadVientoCurrentWeather.text =
             String.format("%.2f m/s", datos.wind?.speed?.toFloat())
         binding.tvDireccionVientoCurrentWeather.text = datos.wind?.deg.toString()
-        binding.tvHumedadCurrentWeather.text =
-            String.format("%s", datos.main?.humidity.toString()) + " %"
-        binding.tvNubosidadCurrentWeather.text =
-            String.format("%s", datos.clouds?.all.toString()) + " %"
+
     }
 
     private fun updateBackground(datosCurrent: CurrentWeatherDataResponse) {
         when (datosCurrent.weather?.get(0)?.icon) {
             "01n", "02n", "03n", "04n", "09n", "10n", "11n", "13n", "50n" -> {
-                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_noche)
             }
             "01d" -> {
                 //cielo con sol
-                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_noche)
             }
 
             "02d", "03d", "04d" -> {
-                binding.ivBackground.setImageResource(R.drawable.bg_app_nubes)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_nubes)
             }
 
             "09d", "10d", "11d" -> {
-                binding.ivBackground.setImageResource(R.drawable.bg_app_lluvia)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_lluvia)
             }
 
             "50d" -> {
                 //niebla
-                binding.ivBackground.setImageResource(R.drawable.bg_app_noche)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_noche)
             }
 
             else -> {
-                binding.ivBackground.setImageResource(R.drawable.bg_app_nubes)
+                binding.ivBackgroundMain.setImageResource(R.drawable.bg_app_nubes)
             }
         }
     }
