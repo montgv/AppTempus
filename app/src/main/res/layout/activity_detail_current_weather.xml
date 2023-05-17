@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailCurrentWeatherActivity">
+
+    <ImageView
+        android:id="@+id/ivBackgroundDetailCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_app_nubes"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tvTitleDetailCurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="Tiempo Actual"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDetailCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="32dp"
+        android:layout_marginHorizontal="16sp"
+        app:cardBackgroundColor="#59000000"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDetailCurrent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieIconDetailCurrent"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                app:lottie_loop="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDescrpcionDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textAllCaps="true"
+                    tools:text="Descripcion" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvTemperaturaDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32sp"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        tools:text="Temp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconSensacionTermicaDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleSensacionTermicaDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Sensación Térmica" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvSensacionTermicaDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Sens" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconVelocidadVientoDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleVelocidadVientoDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Velocidad del Viento" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvVelocidadVientoDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="VelViento" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconDireccionVientoDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleDireccionVientoDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Dirección del Viento" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvDireccionVientoDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="DirViento" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconVisibilidadDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleVisibilidadDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Visibilidad" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvVisibilidadDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Visibilidad" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconHumedadDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleHumedadDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Humedad" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvHumedadDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Humedad" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIconNubosidadDetailCurrent"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_marginEnd="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvTitleNubosidadDetailCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Nubosidad" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end">
+
+                    <TextView
+                        android:id="@+id/tvNubosidadDetailCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Nubosidad" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
