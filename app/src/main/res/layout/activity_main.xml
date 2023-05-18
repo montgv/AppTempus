@@ -165,7 +165,6 @@
 
                     </LinearLayout>
 
-
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -273,15 +272,29 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvAquiAirPollution"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16sp"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        tools:text="@string/tv_calidad_del_aire" />
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/lottieIconAirPollution"
+                            android:layout_width="200sp"
+                            android:layout_height="200sp"
+                            app:lottie_loop="true" />
+
+                        <TextView
+                            android:id="@+id/tvAquiAirPollution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16sp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            tools:text="@string/tv_calidad_del_aire" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

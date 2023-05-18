@@ -76,6 +76,10 @@ class DetailAirPollutionActivity : AppCompatActivity() {
     }
 
     private fun pintarDatosAirPollution(datosAirPollution: AirPollutionDataResponse) {
+
+        binding.lottieIconDetailAirPollution.setAnimation(R.raw.atmosphere_scanning)
+        binding.lottieIconDetailAirPollution.playAnimation()
+
         when (datosAirPollution.list?.get(0)?.main?.aqi) {
             1 -> {
                 binding.tvCalidadAireAirPollution.text = "Bueno"
@@ -100,13 +104,13 @@ class DetailAirPollutionActivity : AppCompatActivity() {
                 binding.tvCalidadAireAirPollution.text = "No hay datos"
             }
         }
-        binding.tvConcCOAirPollution.text = String.format("Concentración de CO: %s μg/m", datosAirPollution.list?.get(0)?.components?.co.toString())
-        binding.tvConcNOAirPollution.text = String.format("Concentración de NO: %s μg/m", datosAirPollution.list?.get(0)?.components?.no.toString())
-        binding.tvConcNO2AirPollution.text = String.format("Concentración de NO2: %s μg/m", datosAirPollution.list?.get(0)?.components?.no2.toString())
-        binding.tvConcO3AirPollution.text = String.format("Concentración de O3: %s μg/m", datosAirPollution.list?.get(0)?.components?.o3.toString())
-        binding.tvConcSO2AirPollution.text = String.format("Concentración de SO2: %s μg/m", datosAirPollution.list?.get(0)?.components?.so2.toString())
-        binding.tvConcPM25AirPollution.text = String.format("Concentración de PM2.5: %s μg/m", datosAirPollution.list?.get(0)?.components?.pm25.toString())
-        binding.tvConcPM10AirPollution.text = String.format("Concentración de PM10: %s μg/m", datosAirPollution.list?.get(0)?.components?.pm10.toString())
-        binding.tvConcNH3AirPollution.text = String.format("Concentración de NH3: %s μg/m", datosAirPollution.list?.get(0)?.components?.nh3.toString())
+        binding.tvConcCOAirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.co.toString())
+        binding.tvConcNOAirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.no.toString())
+        binding.tvConcNO2AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.no2.toString())
+        binding.tvConcO3AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.o3.toString())
+        binding.tvConcSO2AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.so2.toString())
+        binding.tvConcPM25AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.pm25.toString())
+        binding.tvConcPM10AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.pm10.toString())
+        binding.tvConcNH3AirPollution.text = String.format("%s μg/m", datosAirPollution.list?.get(0)?.components?.nh3.toString())
     }
 }

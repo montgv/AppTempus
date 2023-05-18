@@ -3,6 +3,8 @@ package com.example.apptempus
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.apptempus.adapterForecastWeather.ForecastWeatherAdapter
 import com.example.apptempus.api.controller.ForecastWeatherDataResponse
 import com.example.apptempus.api.services.ApiServiceForecastWeather
 import com.example.apptempus.databinding.ActivityDetailForecastBinding
@@ -20,6 +22,7 @@ class DetailForecastActivity : AppCompatActivity() {
     private lateinit var retrofit: Retrofit
     private var latitud: Double? = null
     private var longitud: Double? = null
+    private lateinit var forecastDetailAdapter: ForecastWeatherAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +53,12 @@ class DetailForecastActivity : AppCompatActivity() {
 
     private fun initIU() {
         forecastWeather()
+
+        binding.rvDetailForecastWeather.setHasFixedSize(true)
+        binding.rvDetailForecastWeather.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        forecastDetailAdapter = ForecastWeatherAdapter()
+        binding.rvDetailForecastWeather.adapter = forecastDetailAdapter
     }
 
     private fun forecastWeather() {
@@ -67,10 +76,11 @@ class DetailForecastActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("montse", response.toString())
                     runOnUiThread {
-                        /*forecastWeatherAdapter.updateListaForecastWeather(
+                        binding.tvNombreCiudadDetailForecast.text = response.city?.name
+                        forecastDetailAdapter.updateListaForecastWeather(
                             response.list ?: emptyList()
                         )
-                        forecastWeatherAdapter.notifyDataSetChanged()*/
+                        forecastDetailAdapter.notifyDataSetChanged()
                     }
                 }
             } else {

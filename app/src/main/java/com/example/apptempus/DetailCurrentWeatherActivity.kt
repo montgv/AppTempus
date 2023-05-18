@@ -81,6 +81,7 @@ class DetailCurrentWeatherActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun pintarDatosCurrentWeather(datos: CurrentWeatherDataResponse) {
+        binding.tvNombreCiudadDetailCurrent.text = datos.name.toString()
         val animation = datos.weather?.get(0)?.icon?.let { ToolsApi.getAnimation(it) }
         if (animation != null) {
             binding.lottieIconDetailCurrent.setAnimation(animation)

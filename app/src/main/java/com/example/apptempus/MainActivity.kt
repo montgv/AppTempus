@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apptempus.adapterForecastWeather.ForecastWeatherAdapter
@@ -23,6 +24,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -123,18 +125,25 @@ class MainActivity : AppCompatActivity() {
             if (myResponse.isSuccessful) {
                 Log.i("montse", "funciona busqueda nombre")
 
-                //Tengo que controlar que el array no este vacio
-                if (response != null) {
-                    Log.i("montse", response.toString())
-                    runOnUiThread {
-                        latitud = response[0].lat
-                        longitud = response[0].lon
-                        guardarCoordenadas()
-                        currentWeather()
+                //Tengo que controlar que el array no este vacio, no me vale asi
+                withContext(Dispatchers.Main) {
+                    if (response != null) {
+                        Log.i("montse", response.toString())
+                        runOnUiThread {
+                            latitud = response[0].lat
+                            longitud = response[0].lon
+                            guardarCoordenadas()
+                            currentWeather()
+                        }
+                    } else {
+                        Log.i("montse", "funciona la comprobacion")
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Esta ciudad no existe",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-            } else {
-                Log.i("montse", "no funciona busqueda nombre :(")
             }
         }
     }
@@ -167,6 +176,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pintarDatosAirPollution(datosAir: AirPollutionDataResponse) {
+
+        binding.lottieIconAirPollution.setAnimation(R.raw.atmosphere_scanning)
+        binding.lottieIconAirPollution.playAnimation()
+
         when (datosAir.list?.get(0)?.main?.aqi) {
             1 -> {
                 binding.tvAquiAirPollution.text = "Bueno"
