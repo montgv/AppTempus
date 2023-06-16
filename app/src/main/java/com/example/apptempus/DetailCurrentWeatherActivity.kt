@@ -69,7 +69,7 @@ class DetailCurrentWeatherActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("montse", response.toString())
                     runOnUiThread {
-                        //updateBackground(response)
+                        updateBackground(response)
                         pintarDatosCurrentWeather(response)
                     }
                 }
@@ -89,16 +89,90 @@ class DetailCurrentWeatherActivity : AppCompatActivity() {
         }
         binding.tvDescrpcionDetailCurrent.text = datos.weather?.get(0)?.description.toString()
         binding.tvTemperaturaDetailCurrent.text =
-            String.format("%.2f º", datos.main?.temp?.toFloat())
+            String.format("%s º", datos.main?.temp?.toInt())
         binding.tvSensacionTermicaDetailCurrent.text =
-            String.format("%.2f º", datos.main?.feelsLike?.toFloat())
+            String.format("%s º", datos.main?.feelsLike?.toInt())
         binding.tvVelocidadVientoDetailCurrent.text =
             String.format("%.2f m/s", datos.wind?.speed?.toFloat())
-        binding.tvDireccionVientoDetailCurrent.text = datos.wind?.deg.toString()
-        binding.tvVisibilidadDetailCurrent.text = String.format("%s metros", datos.visibility?.toString())
+        binding.tvVisibilidadDetailCurrent.text =
+            String.format("%s metros", datos.visibility?.toString())
         binding.tvHumedadDetailCurrent.text =
             String.format("%s", datos.main?.humidity.toString()) + " %"
         binding.tvNubosidadDetailCurrent.text =
             String.format("%s", datos.clouds?.all.toString()) + " %"
+    }
+
+    private fun updateBackground(datosCurrent: CurrentWeatherDataResponse) {
+        when (datosCurrent.weather?.get(0)?.icon) {
+            "01d" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_cielo_azul)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "01n" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_noche_luna)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "02d", "03d" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_nubes)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "02n", "03n" -> {
+                //cielo noche con algo de nubes
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_nubes_noche)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "04d" -> {
+                //cielo cubierto de nubes
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_cubierto_nubes)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "04n" -> {
+                //cielo cubierto de nubes noche
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_cubierto_nubes_noche)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 255
+            }
+
+            "09d", "10d" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_lluvia_dia)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 175
+            }
+
+            "09n", "10n" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_lluvia_noche)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 150
+            }
+
+            "11d" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_tormenta_dia)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "11n" -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_tormenta_noche)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "13d", "13n" -> {
+                //nieve
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_nieve)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+
+            "50d", "50n" -> {
+                //niebla
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_niebla)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 255
+            }
+
+            else -> {
+                binding.ivBackgroundDetailCurrent.setImageResource(R.drawable.bg_app_nubes)
+                binding.ivBackgroundDetailCurrent.imageAlpha = 200
+            }
+        }
     }
 }

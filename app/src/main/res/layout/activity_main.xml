@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <ImageView
@@ -26,15 +27,29 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="#FFFFFF"
                 app:iconifiedByDefault="false" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:backgroundTint="@color/white">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </FrameLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="16sp"
-                app:cardBackgroundColor="#59000000"
+                android:layout_marginTop="32sp"
+                android:layout_marginBottom="16sp"
+                app:cardBackgroundColor="#22FFFFFF"
                 app:cardCornerRadius="4dp">
 
                 <TextView
@@ -54,8 +69,8 @@
                 android:id="@+id/cvCurrentWeather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
-                app:cardBackgroundColor="#59000000"
+                android:layout_margin="16sp"
+                app:cardBackgroundColor="#22FFFFFF"
                 app:cardCornerRadius="4dp">
 
                 <LinearLayout
@@ -137,28 +152,35 @@
                         android:gravity="center_vertical|center"
                         android:orientation="horizontal">
 
+                        <ImageView
+                            android:id="@+id/ivIconSensacionTermicaDetailCurrent"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:src="@drawable/ic_sens_termica"
+                            app:tint="@color/white" />
+
                         <TextView
                             android:id="@+id/tvSensacionTermicaCurrentWeather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="16sp"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             tools:text="Sens" />
+
+                        <ImageView
+                            android:id="@+id/ivIconVelocidadVientoDetailCurrent"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            android:layout_marginStart="32sp"
+                            android:src="@drawable/ic_viento"
+                            app:tint="@color/white" />
 
                         <TextView
                             android:id="@+id/tvVelocidadVientoCurrentWeather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="32sp"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            tools:text="Viento" />
-
-                        <TextView
-                            android:id="@+id/tvDireccionVientoCurrentWeather"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="32sp"
+                            android:layout_marginStart="16sp"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             tools:text="Viento" />
@@ -173,8 +195,8 @@
                 android:id="@+id/cvForecastWeather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                app:cardBackgroundColor="#59000000"
+                android:layout_margin="16sp"
+                app:cardBackgroundColor="#22FFFFFF"
                 app:cardCornerRadius="4dp">
 
                 <LinearLayout
@@ -229,9 +251,10 @@
                 android:id="@+id/cvAirPollution"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                android:layout_marginBottom="60sp"
-                app:cardBackgroundColor="#59000000"
+                android:layout_marginHorizontal="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginBottom="32sp"
+                app:cardBackgroundColor="#22FFFFFF"
                 app:cardCornerRadius="4dp">
 
                 <LinearLayout

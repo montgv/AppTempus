@@ -4,43 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".DetailCurrentWeatherActivity">
 
     <ImageView
         android:id="@+id/ivBackgroundDetailCurrent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_app_nubes"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_app_nubes" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDetailCurrent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
-        app:cardBackgroundColor="#59000000"
+        app:cardBackgroundColor="#22FFFFFF"
         app:cardCornerRadius="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="16dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTitleDetailCurrent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiempo Actual"
                 android:gravity="center"
+                android:text="Tiempo Actual"
                 android:textAllCaps="true"
+                android:textColor="@color/white"
                 android:textSize="32sp"
-                android:textStyle="bold"
-                android:textColor="@color/white" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvNombreCiudadDetailCurrent"
@@ -63,6 +65,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32sp"
+                android:layout_marginBottom="16sp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -70,10 +74,9 @@
                     android:id="@+id/tvDescrpcionDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="16sp"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    android:textAllCaps="true"
                     tools:text="Descripcion" />
 
                 <LinearLayout
@@ -104,16 +107,18 @@
                     android:id="@+id/ivIconSensacionTermicaDetailCurrent"
                     android:layout_width="24sp"
                     android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="16sp"
+                    android:src="@drawable/ic_sens_termica"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/tvTitleSensacionTermicaDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="16sp"
+                    android:text="Sensación Térmica"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Sensación Térmica" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,16 +148,18 @@
                     android:id="@+id/ivIconVelocidadVientoDetailCurrent"
                     android:layout_width="24sp"
                     android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="16sp"
+                    android:src="@drawable/ic_viento"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/tvTitleVelocidadVientoDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="16sp"
+                    android:text="Velocidad del Viento"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Velocidad del Viento" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -172,44 +179,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/ivIconDireccionVientoDetailCurrent"
-                    android:layout_width="24sp"
-                    android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
-
-                <TextView
-                    android:id="@+id/tvTitleDireccionVientoDetailCurrent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="16sp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Dirección del Viento" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical|end">
-
-                    <TextView
-                        android:id="@+id/tvDireccionVientoDetailCurrent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16sp"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        tools:text="DirViento" />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -221,16 +190,18 @@
                     android:id="@+id/ivIconVisibilidadDetailCurrent"
                     android:layout_width="24sp"
                     android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="16sp"
+                    android:src="@drawable/ic_visibilidad"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/tvTitleVisibilidadDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="16sp"
+                    android:text="Visibilidad"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Visibilidad" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,16 +231,18 @@
                     android:id="@+id/ivIconHumedadDetailCurrent"
                     android:layout_width="24sp"
                     android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="16sp"
+                    android:src="@drawable/ic_humedad"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/tvTitleHumedadDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="16sp"
+                    android:text="Humedad"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Humedad" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -299,16 +272,18 @@
                     android:id="@+id/ivIconNubosidadDetailCurrent"
                     android:layout_width="24sp"
                     android:layout_height="24sp"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="16sp"
+                    android:src="@drawable/ic_nubosidad"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/tvTitleNubosidadDetailCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="16sp"
+                    android:text="Nubosidad"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Nubosidad" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
