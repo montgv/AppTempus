@@ -1,7 +1,10 @@
 package com.example.apptempus.adapter
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apptempus.R
 import com.example.apptempus.api.controller.forecastWeather.Lista

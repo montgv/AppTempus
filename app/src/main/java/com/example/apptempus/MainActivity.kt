@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.graphics.drawable.DrawableCompat
@@ -184,6 +185,12 @@ class MainActivity : AppCompatActivity(), ForecastWeatherAdapter.OnItemClick,
         guardarCoordenadas()
         currentWeather()
         binding.rvListSearch.visibility = View.GONE
+        hideKeyBoard()
+    }
+
+    private fun hideKeyBoard() {
+        val inm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inm.hideSoftInputFromWindow(binding.viewRoot.windowToken, 0)
     }
 
     private fun airPollution() {
