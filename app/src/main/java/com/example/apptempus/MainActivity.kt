@@ -185,12 +185,7 @@ class MainActivity : AppCompatActivity(), ForecastWeatherAdapter.OnItemClick,
         guardarCoordenadas()
         currentWeather()
         binding.rvListSearch.visibility = View.GONE
-        hideKeyBoard()
-    }
-
-    private fun hideKeyBoard() {
-        val inm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        inm.hideSoftInputFromWindow(binding.viewRoot.windowToken, 0)
+        binding.searchView.clearFocus()
     }
 
     private fun airPollution() {

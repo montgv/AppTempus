@@ -18,7 +18,7 @@ class AdapterItemListSearch(private val listCiudades: ArrayList<GeocodingApiData
             textCountry = view.findViewById(R.id.listCity)
         }
         fun bind(item: GeocodingApiDataResponseItem) {
-            textCountry.text = String.format(itemView.context.getString(R.string.itemCity), item.name,item.state , item.country)
+            textCountry.text = String.format(itemView.context.getString(R.string.itemCity), item.name, item.state, item.country)
             textCountry.setOnClickListener {
                 listener.itemClick(item)
             }
